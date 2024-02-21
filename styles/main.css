@@ -1,0 +1,74 @@
+@import url("https://fonts.googleapis.com/css2?family=Fredoka:wdth,wght@100.1,500&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "Fredoka", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 500;
+  font-style: normal;
+  font-variation-settings: "wdth" 100.1;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #2e2f45;
+  color: white;
+  mix-blend-mode: multiply;
+  padding: 5px 10px;
+}
+
+h1,
+h2,
+i {
+  background: linear-gradient(#e66465, #9198e5);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-size: 2rem;
+}
+
+.shop-title,
+.catalog,
+.icons {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.icons {
+  width: 7dvw;
+}
+
+.catalog {
+  width: 17dvw;
+}
+
+.shop-title {
+  width: 250px;
+}
+
+.shop-title,
+.links:hover {
+  cursor: pointer;
+}
+
+.find {
+  position: absolute;
+  width: 850px;
+  padding: 10px;
+  font-size: 1.5rem;
+  border: double 3px transparent;
+  border-radius: 30px;
+  background-image: linear-gradient(white, white),
+    linear-gradient(to right, #e66465, #9198e5);
+  background-origin: border-box;
+  background-clip: padding-box, border-box;
+  /* visibility: hidden; */
+  opacity: 0;
+}
+
+.find:focus {
+  outline: none;
+}

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <link rel="stylesheet" href="./styles/main.css" />
+    <title>Main</title>
+  </head>
+  <body>
+    <header>
+      <div class="shop-title">
+        <i class="fa fa-birthday-cake fa-4x" aria-hidden="true"></i>
+        <h1>Sweet Shop</h1>
+      </div>
+      <div class="catalog">
+        <input type="text" class="find" placeholder="Find..."/>
+        <h2 class="links">Catalog</h2>
+        <h2 class="links">Requisites</h2>
+      </div>
+      <div class="icons">
+        <i
+          class="fa fa-search fa-4x"
+          aria-hidden="true"
+          style="cursor: pointer"
+          onclick="showSearchInput()"
+        ></i>
+        <i
+          class="fa fa-shopping-cart fa-4x"
+          aria-hidden="true"
+          style="cursor: pointer"
+        ></i>
+      </div>
+    </header>
+
+    <script>
+        function showSearchInput() {
+            const input = document.querySelector(".find");
+            input.style.opacity = "1";
+        }
+    </script>
+  </body>
+</html>

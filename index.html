@@ -17,6 +17,14 @@
         <h1>Sweet Shop</h1>
       </div>
       <div class="catalog">
+        <div class="link">
+          <h2>Catalog</h2>
+        </div>
+        <div class="link">
+          <h2>Requisites</h2>
+        </div>
+      </div>
+      <div class="icons">
         <div class="find-field">
           <input type="text" class="find" placeholder="Find..." />
           <i
@@ -25,10 +33,6 @@
             style="cursor: pointer"
           ></i>
         </div>
-        <h2 class="links">Catalog</h2>
-        <h2 class="links">Requisites</h2>
-      </div>
-      <div class="icons">
         <i
           class="fa fa-search fa-3x"
           id="icon-search"
@@ -43,8 +47,47 @@
             style="cursor: pointer"
           ></i>
         </a>
+        <a href="./profile.html">
+          <i class="fa fa-user fa-3x" aria-hidden="true"></i>
+        </a>
       </div>
     </header>
+
+    <!-- <main>
+      <div class="images">
+        <img
+          src="https://cdn.salla.sa/OxQYp/Yk0JL1iy6HbXaXZuiWySDvpOXFLyJvjkwE1F2KnV.jpg"
+          alt="arizona"
+          style="display: none;"
+        />
+        <img
+          src="https://cdn.yournet.space/good-design.org/2021/Communication/4277-Doritos%20Rainbow%202020/Doritos%20Rainbow_01.jpg"
+          alt="arizona"
+        />
+      </div>
+    </main> -->
+    <div class="slider">
+      <div class="slides">
+        <img
+          src="https://cdn.yournet.space/good-design.org/2021/Communication/4277-Doritos%20Rainbow%202020/Doritos%20Rainbow_01.jpg"
+          alt="Image 1"
+        />
+        <img
+          src="https://cdn.salla.sa/OxQYp/Yk0JL1iy6HbXaXZuiWySDvpOXFLyJvjkwE1F2KnV.jpg"
+          alt="Image 2"
+        />
+        <img
+          src="https://kambeauty.ru/wp-content/uploads/2022/05/6A6C4FDD-E02F-4771-AA33-D61E23742C32.png"
+          alt="Image 3"
+        />  
+      </div>
+      <button class="prev">Previous</button>
+      <button class="next">Next</button>
+    </div>
+
+    <footer>
+      <h1>HH</h1>
+    </footer>
 
     <script>
       function showSearchInput() {
@@ -57,6 +100,28 @@
         if (iconSearch.className === "fa fa-times fa-3x")
           iconSearch.className = "fa fa-search fa-3x";
         else iconSearch.className = "fa fa-times fa-3x";
+      }
+
+      const prevBtn = document.querySelector(".prev");
+      const nextBtn = document.querySelector(".next");
+      const slides = document.querySelector(".slides");
+
+      let slideIndex = 0;
+
+      prevBtn.addEventListener("click", () => {
+        slideIndex =
+          slideIndex === 0 ? slides.children.length - 1 : slideIndex - 1;
+        updateSlide();
+      });
+
+      nextBtn.addEventListener("click", () => {
+        slideIndex =
+          slideIndex === slides.children.length - 1 ? 0 : slideIndex + 1;
+        updateSlide();
+      });
+
+      function updateSlide() {
+        slides.style.transform = `translateX(-${slideIndex * 100}%)`;
       }
     </script>
   </body>

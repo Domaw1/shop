@@ -53,25 +53,98 @@
       </div>
     </header>
 
-    <!-- <main>
-      <div class="images">
-        <img
-          src="https://cdn.salla.sa/OxQYp/Yk0JL1iy6HbXaXZuiWySDvpOXFLyJvjkwE1F2KnV.jpg"
-          alt="arizona"
-          style="display: none;"
-        />
-        <img
-          src="https://cdn.yournet.space/good-design.org/2021/Communication/4277-Doritos%20Rainbow%202020/Doritos%20Rainbow_01.jpg"
-          alt="arizona"
-        />
+    <main>
+      <!-- <div class="slider">
+        <div class="images">
+          <img
+            src="https://cdn.salla.sa/OxQYp/Yk0JL1iy6HbXaXZuiWySDvpOXFLyJvjkwE1F2KnV.jpg"
+            alt="arizona"
+            class="image"
+          />
+          <img
+            src="https://cdn.yournet.space/good-design.org/2021/Communication/4277-Doritos%20Rainbow%202020/Doritos%20Rainbow_01.jpg"
+            alt="doritos"
+            class="image"
+          />
+          <img
+            src="https://kambeauty.ru/wp-content/uploads/2022/05/6A6C4FDD-E02F-4771-AA33-D61E23742C32.png"
+            alt="chupa"
+            class="image"
+          />
+        </div>
+        <button class="prev" onclick="showPrevSlide()">Prev</button>
+        <button class="next" onclick="showNextSlide()">Next</button>
+      </div> -->
+      <div class="slider-container">
+        <div class="slider">
+          <div class="slides">
+            <div id="slides__1" class="slide">
+              <span class="slide__text">1</span>
+              <a class="slide__prev" href="#slides__4" title="Next"></a>
+              <a class="slide__next" href="#slides__2" title="Next"></a>
+            </div>
+            <div id="slides__2" class="slide">
+              <span class="slide__text">2</span>
+              <a class="slide__prev" href="#slides__1" title="Prev"></a>
+              <a class="slide__next" href="#slides__3" title="Next"></a>
+            </div>
+            <div id="slides__3" class="slide">
+              <span class="slide__text">3</span>
+              <a class="slide__prev" href="#slides__2" title="Prev"></a>
+              <a class="slide__next" href="#slides__4" title="Next"></a>
+            </div>
+            <div id="slides__4" class="slide">
+              <span class="slide__text">4</span>
+              <a class="slide__prev" href="#slides__3" title="Prev"></a>
+              <a class="slide__next" href="#slides__1" title="Prev"></a>
+            </div>
+          </div>
+          <div class="slider__nav">
+            <a class="slider__navlink" href="#slides__1"></a>
+            <a class="slider__navlink" href="#slides__2"></a>
+            <a class="slider__navlink" href="#slides__3"></a>
+            <a class="slider__navlink" href="#slides__4"></a>
+          </div>
+        </div>
       </div>
-    </main> -->
+    </main>
 
     <footer>
       <h1>HH</h1>
     </footer>
 
     <script>
+      // const images = document.querySelectorAll(".image");
+      // const list = document.querySelector(".images");
+
+      // const imageList = Array.from(images);
+      // let slideIndex = 0;
+      // const imageWidth = images[0].clientWidth;
+
+      // function showNextSlide() {
+      //   if (slideIndex < images.length - 1) {
+      //     slideIndex++;
+      //   } else {
+      //     slideIndex = 0;
+      //   }
+      //   updateSlide();
+      // }
+
+      // function showPrevSlide() {
+      //   if (slideIndex > 0) {
+      //     slideIndex--;
+      //   } else {
+      //     slideIndex = images.length - 1;
+      //   }
+      //   updateSlide();
+      // }
+
+      // function updateSlide() {
+      //   list.style.transform = `translateX(-${slideIndex * imageWidth}px)`;
+      // }
+
+      // updateSlide();
+
       function showSearchInput() {
         const field = document.querySelector(".find-field");
         const catalog = document.querySelector(".catalog");

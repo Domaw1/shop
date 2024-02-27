@@ -19,7 +19,11 @@
       <div class="catalog">
         <div class="find-field">
           <input type="text" class="find" placeholder="Find..." />
-          <i class="fa fa-search fa-3x" aria-hidden="true"></i>
+          <i
+            class="fa fa-search fa-3x"
+            aria-hidden="true"
+            style="cursor: pointer"
+          ></i>
         </div>
         <h2 class="links">Catalog</h2>
         <h2 class="links">Requisites</h2>
@@ -29,22 +33,25 @@
           class="fa fa-search fa-3x"
           id="icon-search"
           aria-hidden="true"
-          style="cursor: pointer;"
+          style="cursor: pointer"
           onclick="showSearchInput()"
         ></i>
-        <i
-          class="fa fa-shopping-cart fa-3x"
-          aria-hidden="true"
-          style="cursor: pointer"
-        ></i>
+        <a href="./cart.html">
+          <i
+            class="fa fa-shopping-cart fa-3x"
+            aria-hidden="true"
+            style="cursor: pointer"
+          ></i>
+        </a>
       </div>
     </header>
 
     <script>
       function showSearchInput() {
         const field = document.querySelector(".find-field");
-        const search = document.querySelector("#icon-search");
+        const catalog = document.querySelector(".catalog");
         field.classList.toggle("show");
+        catalog.classList.toggle("show");
 
         const iconSearch = document.querySelector("#icon-search");
         if (iconSearch.className === "fa fa-times fa-3x")

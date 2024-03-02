@@ -26,9 +26,10 @@
       WHERE categories.nameCategory = '$selectedCategory' ORDER BY products.idProduct"
   );
   $filteredProducts = mysqli_fetch_all($filter);
-
-  if (count($filteredProducts) == 0) {
+  if (!is_string($selectedCategory)) {
     $filteredProducts = $products;
+  } else if (count($filteredProducts) == 0) {
+    // var_dump($filteredProducts);
   }
   ?>
 
@@ -99,20 +100,26 @@
     </div>
 
     <div class="products">
-      <? foreach ($filteredProducts as $product): ?>
-        <div class="product">
-          <h2>
-            <?= $product[1] ?>
-          </h2>
-          <?php
-          $imageData = base64_encode($product[8]); // замените 'blob_column' на имя вашего столбца с данными blob
-          // Генерация тега <img> с данными изображения
-          echo '<img src="data:image/jpeg;base64,' . $imageData . '" />';
-          ?>
-          <p><?= $product[5] ?>.99$</p>
-          <button>Buy</button>
-        </div>
-      <? endforeach; ?>
+      <? if (count($filteredProducts) == 0): ?>
+        <h1>No results</h1>
+      <? else: ?>
+        <? foreach ($filteredProducts as $product): ?>
+          <div class="product">
+            <h2>
+              <?= $product[1] ?>
+            </h2>
+            <?php
+            $imageData = base64_encode($product[8]);
+            echo '<img src="data:image/jpeg;base64,' . $imageData . '"style="width: 500px; height=500px" />';
+            ?>
+            <p>
+              <?= $product[5] ?>.99$ /
+              <?= $product[7] ?> pieces
+            </p>
+            <button>Add to cart</button>
+          </div>
+        <? endforeach; ?>
+      <? endif; ?>
     </div>
   </main>
 
@@ -136,7 +143,15 @@
         } else {
           currentImage.classList.toggle("toggle");
         }
+
+        if (index === getPrevIndex()) {
+          currentImage.classList.add("image-prev");
+        }
       });
+    }
+
+    function getPrevIndex() {
+      return slideIndex > 0 ? slideIndex - 1 : images.length - 1;
     }
 
     function showNextSlide() {
@@ -156,6 +171,7 @@
       }
       updateSlide();
     }
+
     updateSlide();
 
     function showSearchInput() {

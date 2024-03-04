@@ -14,6 +14,9 @@
   $query = mysqli_query($conn, "SELECT * FROM categories");
   $categories = mysqli_fetch_all($query);
 
+  $brandsQuery = mysqli_query($conn, "SELECT * FROM brands");
+  $brands = mysqli_fetch_all($brandsQuery);
+
   $productQuery = mysqli_query($conn, "SELECT * FROM products");
   $products = mysqli_fetch_all($productQuery);
 
@@ -84,40 +87,43 @@
       <button class="prev" onclick="showPrevSlide()"></button>
       <button class="next" onclick="showNextSlide()"></button>
     </div>
-    <div class="categories">
-      <a href="index.php">
-        <p>All Products</p>
-      </a>
-      <? foreach ($categories as $itemCategory): ?>
-        <a href="index.php?category=<?= $itemCategory[1] ?>">
-          <p>
-            <?= $itemCategory[1] ?>
-          </p>
-        </a>
-      <? endforeach; ?>
-    </div>
+    <h1 style="text-align: center;">Our catalog</h1>
 
-    <div class="products">
-      <? if (count($filteredProducts) == 0): ?>
-        <h1>No results</h1>
-      <? else: ?>
-        <? foreach ($filteredProducts as $product): ?>
-          <div class="product">
-            <h2>
-              <?= $product[1] ?>
-            </h2>
-            <?php
-            $imageData = base64_encode($product[8]);
-            echo '<img src="data:image/jpeg;base64,' . $imageData . '"style="width: 500px; height=500px" />';
-            ?>
-            <p>
-              <?= $product[5] ?>.99$ /
-              <?= $product[7] ?> pieces
-            </p>
-            <button>Add to cart</button>
-          </div>
-        <? endforeach; ?>
-      <? endif; ?>
+    <div class="products-filters">
+      <div class="categories">
+        <select name="category" id="category">
+          <option value="products">All products</option>
+          <? foreach ($categories as $itemCategory): ?>
+            <option value="<?= $itemCategory[1] ?>">
+              <?= $itemCategory[1] ?>
+            </option>
+          <? endforeach; ?>
+        </select>
+        <button class="btn" onclick="selectCategory()">Show</button>
+      </div>
+      <div class="products">
+        <? if (count($filteredProducts) == 0): ?>
+            <h1>No results</h1>
+        <? else: ?>
+          <? foreach ($filteredProducts as $product): ?>
+            <div class="product">
+              <h2>
+                <?= $product[1] ?>
+              </h2>
+              <?php
+              $imageData = base64_encode($product[8]);
+              echo '<img src="data:image/jpeg;base64,' . $imageData . '"style="width: 400px; height=400px" />';
+              ?>
+              <p>
+                <?= $product[5] ?>.99$ /
+                <?= $product[7] ?> pieces
+              </p>
+              <button class="btn">Add to cart</button>
+            </div>
+          <? endforeach; ?>
+        <? endif; ?>
+      </div>
+
     </div>
   </main>
 

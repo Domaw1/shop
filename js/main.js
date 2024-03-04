@@ -55,3 +55,14 @@ function showSearchInput() {
     iconSearch.className = "fa fa-search fa-3x";
   else iconSearch.className = "fa fa-times fa-3x";
 }
+
+function selectCategory() {
+  const select = document.querySelector("#category");
+  const selectedOption = select.options[select.selectedIndex].value;
+
+  if (selectedOption !== "products") {
+    window.location.replace(`index.php?category=${selectedOption}`);
+  }
+  else 
+    window.location.replace('index.php');
+}

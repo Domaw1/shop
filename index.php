@@ -44,7 +44,7 @@
         <h2>Catalog</h2>
       </div>
       <div class="link">
-        <h2>Requisites</h2>
+        <h2>Brands</h2>
       </div>
     </div>
     <div class="icons">
@@ -103,7 +103,7 @@
       </div>
       <div class="products">
         <? if (count($filteredProducts) == 0): ?>
-            <h1>No results</h1>
+          <h1>No results</h1>
         <? else: ?>
           <? foreach ($filteredProducts as $product): ?>
             <div class="product">
@@ -114,11 +114,14 @@
               $imageData = base64_encode($product[8]);
               echo '<img src="data:image/jpeg;base64,' . $imageData . '"style="width: 400px; height=400px" />';
               ?>
-              <p>
-                <?= $product[5] ?>.99$ /
-                <?= $product[7] ?> pieces
-              </p>
-              <button class="btn">Add to cart</button>
+              <div>
+                <p>
+                  <?= $product[5] ?>.99$ /
+                  <?= $product[7] ?> pieces
+                </p>
+                <button class="btn">Add to cart</button>
+
+              </div>
             </div>
           <? endforeach; ?>
         <? endif; ?>

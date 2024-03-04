@@ -56,8 +56,9 @@ function showSearchInput() {
   else iconSearch.className = "fa fa-times fa-3x";
 }
 
+const select = document.querySelector("#category");
+
 function selectCategory() {
-  const select = document.querySelector("#category");
   const selectedOption = select.options[select.selectedIndex].value;
 
   if (selectedOption !== "products") {
@@ -66,3 +67,7 @@ function selectCategory() {
   else 
     window.location.replace('index.php');
 }
+
+const option = window.location.search.substring(10);
+
+select.value = option === '' ? "products" : option;

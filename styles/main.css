@@ -1,13 +1,11 @@
-@import url("https://fonts.googleapis.com/css2?family=Fredoka:wdth,wght@100.1,500&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
 
 * {
   margin: 0;
   padding: 0;
-  font-family: "Fredoka", sans-serif;
-  font-optical-sizing: auto;
-  font-weight: 500;
+  font-family: "Bebas Neue", sans-serif;
+  font-weight: 400;
   font-style: normal;
-  font-variation-settings: "wdth" 100.1;
 }
 
 header {
@@ -220,7 +218,8 @@ hr {
   justify-content: space-between;
   border: 2px solid #9198e5;
   width: 400px;
-  text-wrap: wrap;
+  height: 600px;
+  text-wrap:balance;
   padding: 7px;
 }
 

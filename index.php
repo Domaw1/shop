@@ -11,27 +11,27 @@
 
 <body>
   <?php require "connection.php";
-  $query = mysqli_query($conn, "SELECT * FROM categories");
-  $categories = mysqli_fetch_all($query);
+  $categoriesQuery = mysqli_query($conn, "SELECT * FROM categories");
+  $categories = mysqli_fetch_all($categoriesQuery);
 
-  $brandsQuery = mysqli_query($conn, "SELECT * FROM brands");
-  $brands = mysqli_fetch_all($brandsQuery);
+  $selectedCategory = isset($_GET["category"]) ? $_GET["category"] : null;
+  $searchValue = isset($_GET["search"]) ? $_GET["search"] : null;
 
-  $productQuery = mysqli_query($conn, "SELECT * FROM products");
-  $products = mysqli_fetch_all($productQuery);
-
-  $currentUrl = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
-  $path = parse_url($currentUrl, PHP_URL_QUERY);
-  $selectedCategory = substr($path, 9);
-  $filter = mysqli_query(
-    $conn,
-    "SELECT * FROM products INNER JOIN categories ON categories.idCategory = products.idCategory
-      WHERE categories.nameCategory = '$selectedCategory' ORDER BY products.idProduct"
-  );
-  $filteredProducts = mysqli_fetch_all($filter);
-  if (!is_string($selectedCategory)) {
-    $filteredProducts = $products;
+  if ($selectedCategory) {
+    $filter = mysqli_query(
+      $conn,
+      "SELECT * FROM products INNER JOIN categories ON categories.idCategory = products.idCategory
+        WHERE categories.nameCategory = '$selectedCategory' AND products.title LIKE '%$searchValue%'
+        ORDER BY products.idProduct"
+    );
+  } else {
+    $filter = mysqli_query(
+      $conn,
+      "SELECT * FROM products WHERE title LIKE '%$searchValue%'"
+    );
   }
+
+  $filteredProducts = mysqli_fetch_all($filter);
   ?>
 
   <header>
@@ -50,7 +50,7 @@
     <div class="icons">
       <div class="find-field">
         <input type="text" class="find" placeholder="Find..." />
-        <i class="fa fa-search fa-3x" aria-hidden="true" style="cursor: pointer"></i>
+        <i class="fa fa-search fa-3x" aria-hidden="true" onclick="findProducts(`<?=$selectedCategory ?>`)" style="cursor: pointer"></i>
       </div>
       <i class="fa fa-search fa-3x" id="icon-search" aria-hidden="true" style="cursor: pointer"
         onclick="showSearchInput()"></i>
@@ -130,7 +130,7 @@
     </div>
   </main>
 
-  <footer>
+  <footer id="footer">
     <h1>HH</h1>
   </footer>
 

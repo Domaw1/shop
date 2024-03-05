@@ -56,6 +56,21 @@ function showSearchInput() {
   else iconSearch.className = "fa fa-times fa-3x";
 }
 
+function findProducts(selectedOption = "") {
+  const findInput = document.querySelector(".find");
+  const categoryParam = selectedOption ? `category=${selectedOption}` : "";
+  const searchParam = findInput.value ? `search=${findInput.value}` : "";
+
+  const queryString =
+    categoryParam && searchParam
+      ? `?${categoryParam}&${searchParam}`
+      : categoryParam || searchParam
+      ? `?${categoryParam}${searchParam}`
+      : "";
+
+  window.location.href = `index.php${queryString}`;
+}
+
 const select = document.querySelector("#category");
 
 function selectCategory() {
@@ -63,11 +78,9 @@ function selectCategory() {
 
   if (selectedOption !== "products") {
     window.location.replace(`index.php?category=${selectedOption}`);
-  }
-  else 
-    window.location.replace('index.php');
+  } else window.location.replace("index.php");
 }
 
 const option = window.location.search.substring(10);
 
-select.value = option === '' ? "products" : option;
+select.value = option === "" ? "products" : option;

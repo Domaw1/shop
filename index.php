@@ -44,13 +44,16 @@
         <h2>Catalog</h2>
       </div>
       <div class="link">
-        <h2>Brands</h2>
+        <a href="brands.html">
+          <h2>Brands</h2>
+        </a>
       </div>
     </div>
     <div class="icons">
       <div class="find-field">
-        <input type="text" class="find" placeholder="Find..."/>
-        <i class="fa fa-search fa-3x" aria-hidden="true" onclick="findProducts(`<?=$selectedCategory ?>`)" style="cursor: pointer"></i>
+        <input type="text" class="find" placeholder="Find..." />
+        <i class="fa fa-search fa-3x" aria-hidden="true" onclick="findProducts(`<?= $selectedCategory ?>`)"
+          style="cursor: pointer"></i>
       </div>
       <i class="fa fa-search fa-3x" id="icon-search" aria-hidden="true" style="cursor: pointer"
         onclick="showSearchInput()"></i>

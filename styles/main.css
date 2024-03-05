@@ -205,6 +205,10 @@ hr {
   text-decoration: none;
 }
 
+a {
+  text-decoration: none;
+}
+
 .products {
   display: flex;
   flex-wrap: wrap;

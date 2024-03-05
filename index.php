@@ -49,7 +49,7 @@
     </div>
     <div class="icons">
       <div class="find-field">
-        <input type="text" class="find" placeholder="Find..." />
+        <input type="text" class="find" placeholder="Find..."/>
         <i class="fa fa-search fa-3x" aria-hidden="true" onclick="findProducts(`<?=$selectedCategory ?>`)" style="cursor: pointer"></i>
       </div>
       <i class="fa fa-search fa-3x" id="icon-search" aria-hidden="true" style="cursor: pointer"
@@ -87,7 +87,7 @@
       <button class="prev" onclick="showPrevSlide()"></button>
       <button class="next" onclick="showNextSlide()"></button>
     </div>
-    <h1 style="text-align: center;">Our catalog</h1>
+    <h1 style="text-align: center; margin-top: 10px;">Our catalog</h1>
 
     <div class="products-filters">
       <div class="categories">

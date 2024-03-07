@@ -9,9 +9,8 @@
   <title>Main</title>
 </head>
 
+
 <body>
-
-
   <?php require "connection.php";
   $categoriesQuery = mysqli_query($conn, "SELECT * FROM categories");
   $categories = mysqli_fetch_all($categoriesQuery);

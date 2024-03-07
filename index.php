@@ -65,9 +65,7 @@
       </a>
     </div>
   </header>
-
   <hr size="3px" />
-
   <main>
     <div class="slider">
       <div class="pop">

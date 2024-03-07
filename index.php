@@ -9,7 +9,6 @@
   <title>Main</title>
 </head>
 
-
 <body>
   <?php require "connection.php";
   $categoriesQuery = mysqli_query($conn, "SELECT * FROM categories");
@@ -46,8 +45,6 @@
       </div>
       <div class="link">
         <a href="brands.html">
-
-        
           <h2>Brands</h2>
         </a>
       </div>

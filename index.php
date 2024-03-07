@@ -45,6 +45,8 @@
       </div>
       <div class="link">
         <a href="brands.html">
+
+        
           <h2>Brands</h2>
         </a>
       </div>

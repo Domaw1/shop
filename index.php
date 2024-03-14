@@ -35,11 +35,47 @@
   ?>
 
   <header>
-    <div class="shop-title">
+    <div class="user-links">
+      <div style="display: flex; width: 350px; justify-content: space-between;">
+        <div class="link">
+          <a href="profile.html">
+            Магазины
+          </a>
+        </div>
+        <div class="link">
+          <a href="brands.html">
+            Доставка и оплата
+          </a>
+        </div>
+      </div>
+      <div class="jewerly-link">
+        <h1>JEWERLY</h1>
+      </div>
+      <div class="icons">
+        <a href="#">
+          <i class="fa fa-heart fa-2x" aria-hidden="true"></i>
+        </a>
+        <a href="./cart.html">
+          <i class="fa fa-shopping-cart fa-2x" aria-hidden="true" style="cursor: pointer"></i>
+        </a>
+        <a href="./profile.html">
+          <i class="fa fa-user fa-2x" aria-hidden="true"></i>
+        </a>
+      </div>
+    </div>
+    <nav>
+      <div>
+        <h2>Catalog</h2>
+      </div>
+      <div class="search">
+        <input type="text" placeholder="Find..." />
+      </div>
+    </nav>
+    <!-- <div class="shop-title">
       <i class="fa fa-birthday-cake fa-4x" aria-hidden="true"></i>
       <h1>Sweet Shop</h1>
-    </div>
-    <div class="catalog">
+    </div> -->
+    <!-- <div class="catalog">
       <div class="link">
         <h2>Catalog</h2>
       </div>
@@ -63,31 +99,10 @@
       <a href="./profile.html">
         <i class="fa fa-user fa-3x" aria-hidden="true"></i>
       </a>
-    </div>
+    </div> -->
   </header>
   <hr size="3px" />
   <main>
-    <div class="slider">
-      <div class="pop">
-        <h1>MOST POPULAR</h1>
-      </div>
-      <div class="images">
-        <div class="image">
-          <img src="./images/arizona.png" alt="arizona" />
-        </div>
-        <div class="image">
-          <img src="./images/beast.png" alt="doritos" />
-        </div>
-        <div class="image">
-          <img src="./images/chup.png" alt="feastables " />
-        </div>
-        <div class="image">
-          <img src="./images/doritos.png" alt="feastables " />
-        </div>
-      </div>
-      <button class="prev" onclick="showPrevSlide()"></button>
-      <button class="next" onclick="showNextSlide()"></button>
-    </div>
     <h1 style="text-align: center; margin-top: 10px;">Our catalog</h1>
 
     <div class="products-filters">

@@ -30,13 +30,12 @@ i {
   display: flex;
   width: 100%;
   align-items: center;
-  justify-content: space-around;
+  justify-content: space-between;
 }
 
 .jewerly-link {
-  display: flex;
-  justify-content: center;
   font-size: 1.3rem;
+  text-align: center;
 }
 
 nav {
@@ -45,17 +44,24 @@ nav {
   justify-content: space-around;
 }
 
-/* .shop-title,
-.catalog, */
 .icons {
   display: flex;
   align-items: center;
 }
 
 .icons {
-  justify-content: space-between;
-  width: 8%;
+  justify-content: flex-end;
+  width: calc((100% - 200px) / 2);
+}
+
+.icons > a {
   margin-right: 20px;
+}
+
+.info-links {
+  display: flex;
+  width: calc((100% - 200px) / 2);
+  justify-content: flex-start;
 }
 
 .link {
@@ -66,8 +72,30 @@ nav {
   height: 30px;
 }
 
+.link > a {
+  font-size: 1.1rem;
+}
+
+.link > a,
+.link > a:visited {
+  color: black;
+}
+
 .link > a:hover {
   cursor: pointer;
+}
+
+.search-input {
+  width: 500px;
+  height: 25px;
+  font-size: 1.1rem;
+  padding: 5px;
+  border: 1px solid black;
+  border-radius: 10px;
+}
+
+.search-input:focus {
+  outline: 1px solid blue;
 }
 
 hr {

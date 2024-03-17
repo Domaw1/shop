@@ -14,8 +14,8 @@
   $categoriesQuery = mysqli_query($conn, "SELECT * FROM categories");
   $categories = mysqli_fetch_all($categoriesQuery);
 
-  $selectedCategory = isset($_GET["category"]) ? $_GET["category"] : null;
-  $searchValue = isset($_GET["search"]) ? $_GET["search"] : null;
+  $selectedCategory = isset ($_GET["category"]) ? $_GET["category"] : null;
+  $searchValue = isset ($_GET["search"]) ? $_GET["search"] : null;
 
   if ($selectedCategory) {
     $filter = mysqli_query(
@@ -36,7 +36,7 @@
 
   <header>
     <div class="user-links">
-      <div style="display: flex; width: 350px; justify-content: space-between;">
+      <div class="info-links">
         <div class="link">
           <a href="profile.html">
             Магазины
@@ -64,46 +64,21 @@
       </div>
     </div>
     <nav>
-      <div>
+      <div class="jewerly-link">
         <h2>Catalog</h2>
       </div>
       <div class="search">
-        <input type="text" placeholder="Find..." />
+        <input type="text" placeholder="Find..." class="search-input"/>
       </div>
     </nav>
-    <!-- <div class="shop-title">
-      <i class="fa fa-birthday-cake fa-4x" aria-hidden="true"></i>
-      <h1>Sweet Shop</h1>
-    </div> -->
-    <!-- <div class="catalog">
-      <div class="link">
-        <h2>Catalog</h2>
-      </div>
-      <div class="link">
-        <a href="brands.html">
-          <h2>Brands</h2>
-        </a>
-      </div>
-    </div>
-    <div class="icons">
-      <div class="find-field">
-        <input type="text" class="find" placeholder="Find..." />
-        <i class="fa fa-search fa-3x" aria-hidden="true" onclick="findProducts(`<?= $selectedCategory ?>`)"
-          style="cursor: pointer"></i>
-      </div>
-      <i class="fa fa-search fa-3x" id="icon-search" aria-hidden="true" style="cursor: pointer"
-        onclick="showSearchInput()"></i>
-      <a href="./cart.html">
-        <i class="fa fa-shopping-cart fa-3x" aria-hidden="true" style="cursor: pointer"></i>
-      </a>
-      <a href="./profile.html">
-        <i class="fa fa-user fa-3x" aria-hidden="true"></i>
-      </a>
-    </div> -->
   </header>
+
   <hr size="3px" />
+
   <main>
-    <h1 style="text-align: center; margin-top: 10px;">Our catalog</h1>
+    <div class="jewerly-link">
+      <h1 >Our catalog</h1>
+    </div>
 
     <div class="products-filters">
       <div class="categories">

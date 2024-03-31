@@ -39,7 +39,7 @@
       <div class="info-links">
         <div class="link">
           <a href="profile.html">
-            Магазины
+            О нас
           </a>
         </div>
         <div class="link">
@@ -65,7 +65,7 @@
     </div>
     <nav>
       <div class="jewerly-link">
-        <h2>Catalog</h2>
+        <h2>Каталог</h2>
       </div>
       <div class="search">
         <input type="text" placeholder="Find..." class="search-input"/>
@@ -77,7 +77,7 @@
 
   <main>
     <div class="jewerly-link">
-      <h1 >Our catalog</h1>
+      <h1>Наш каталог</h1>
     </div>
 
     <div class="products-filters">

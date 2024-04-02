@@ -7,8 +7,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
   <link rel="stylesheet" href="./styles/main.css" />
   <title>Main</title>
-  <script src="https://kit.fontawesome.com/34d37fffb3.js" crossorigin="anonymous"></script>
-  <script src="./js/main.js"></script>
+  <script src="https://kit.fontawesome.com/34d37fffb3.js"></script>
 
 </head>
 
@@ -57,7 +56,7 @@
       <div class="search">
           <i class="fa-solid fa-magnifying-glass fa-lg"></i>
           <label>
-              <input type="text" placeholder="Поиск..." class="search-input" oninput="changeInput()"/>
+              <input type="text" placeholder="Поиск..." class="search-input"/>
           </label>
           <i class="fa-solid fa-xmark fa-xl" id="xmark" onclick="clearSearchInput()"></i>
       </div>
@@ -123,6 +122,7 @@
     <h1>HH</h1>
   </footer>
 
+  <script src="./js/main.js"></script>
 </body>
 
 </html>

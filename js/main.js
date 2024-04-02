@@ -1,25 +1,25 @@
-const images = document.querySelectorAll(".image");
-const list = document.querySelector(".images");
-const imageList = Array.from(images);
-
-let slideIndex = 0;
-const imageWidth = images[0].clientWidth;
+// const images = document.querySelectorAll(".image");
+// const list = document.querySelector(".images");
+// const imageList = Array.from(images);
+//
+// let slideIndex = 0;
+// const imageWidth = images[0].clientWidth;
+const searchInput = document.querySelector(".search-input");
+const xmark = document.querySelector("#xmark");
 
 function changeInput() {
-  const searchInput = document.querySelector(".search-input");
-  const xmark = document.querySelector("#xmark");
-
   if(searchInput.value.length > 0)
     xmark.style.visibility = "visible";
   else
     xmark.style.visibility = "hidden";
 }
 
+searchInput.addEventListener("input", changeInput);
+
 searchInput.addEventListener("keydown", function(e) {
   if(e.keyCode === 13) {
     console.log("here");
   }
-  console.log("tut")
 });
 
 // function updateSlide() {
@@ -91,10 +91,7 @@ function selectCategory() {
 //
 // select.value = option === "" ? "products" : option;
 
-
-
 function clearSearchInput() {
-  const searchInput = document.querySelector(".search-input");
-
   searchInput.value = "";
+  xmark.style.visibility = "hidden";
 }

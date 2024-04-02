@@ -1,2 +1,4 @@
-<?php 
-    $conn = mysqli_connect("localhost","root","","shop", "3307");
+<?php
+    session_start();
+
+    $conn = mysqli_connect("localhost","root","","jewelry", "3307");

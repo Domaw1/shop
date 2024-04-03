@@ -13,6 +13,14 @@
 
 <body>
   <?php require "connection.php";
+  function transliterate($text) {
+      $transliteration_table = array(
+          "Ozherelya" => "Ожерелья", "Kolca" => "Кольца", "Sergi" => "Серьги",
+          "Braslety" => "Браслеты", "Cepi" => "Цепи"
+      );
+      return strtr($text, $transliteration_table);
+  }
+
   function translit($value)
   {
     $converter = array(
@@ -85,8 +93,7 @@
       'Я' => 'Ya',
     );
 
-    $value = strtr($value, $converter);
-    return $value;
+      return strtr($value, $converter);
   }
 
   $categories_query = mysqli_query($conn, "SELECT * FROM categories");
@@ -95,12 +102,19 @@
   $products_query = mysqli_query($conn, "SELECT * FROM products");
   $filtered_products = mysqli_fetch_all($products_query);
 
-  $url = "https://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
-  $url_query = parse_url($url, PHP_URL_QUERY);
+  $currentCategory = $_GET["category"];
 
-  if ($url_query != null) {
-    $currentCategory = substr($url_query, 9);
-  }
+  $query_string = "SELECT * FROM products INNER JOIN categories ON products.category_id = categories.id WHERE categories.title = ?";
+  $filter_query = $conn -> prepare($query_string);
+
+  $currentCategory = transliterate($currentCategory);
+  $filter_query -> bind_param("s", $currentCategory);
+  $filter_query -> execute();
+  $filter_query = $filter_query -> get_result();
+  $result = mysqli_fetch_all($filter_query);
+
+  if($result)
+      $filtered_products = $result;
   ?>
 
   <header>
@@ -117,8 +131,8 @@
           </a>
         </div>
       </div>
-      <div class="jewerly-link">
-        <h1>JEWELRY</h1>
+      <div class="jewelry-link">
+        <h1>Ювелирка</h1>
       </div>
       <div class="icons">
         <a href="#">
@@ -146,11 +160,9 @@
     </nav>
   </header>
 
-  <hr size="3px" />
-
   <main>
     <div class="jewelry-link">
-      <h1>Наш каталог</h1>
+      <h1 style="margin-top: 10px">Наш каталог</h1>
     </div>
 
     <div class="products-filters">
@@ -173,26 +185,34 @@
             <div class="product">
               <?php
               $query_string = "SELECT * FROM photos INNER JOIN products ON photos.product_id = products.id 
-                               WHERE photos.product_id = $product[0] ORDER BY photos.id";
-              $select_photos_query = mysqli_query($conn, $query_string);
-              $photos = mysqli_fetch_all($select_photos_query);
-              $imageData = base64_encode($photos[0][2]);
+                               WHERE photos.product_id = ? ORDER BY photos.id";
+
+              $image_query = $conn -> prepare($query_string);
+
+              $currentCategory = transliterate($currentCategory);
+              $image_query -> bind_param("i", $product[0]);
+              $image_query -> execute();
+              $image_query = $image_query -> get_result();
+              $result_image = mysqli_fetch_all($image_query);
+
+              $imageData = base64_encode($result_image[0][2]);
 
               echo '<img src="data:image/jpeg;base64,' . $imageData . '"style="width: 200px; height=200px; align-self:center;" />';
               ?>
               <div>
-                <p style="font-size: 2rem">
+                <p style="font-size: 2rem" class="product-info">
                   <?= $product[8] ?> ₽
                 </p>
-                <p style="font-size: 1.3rem">
+                <p class="product-info">
                   <?= $product[1] ?>
                 </p>
-                <p style="font-size: 1.3rem;">
-                  <?= $product[6] ?> г
+                <p class="product-info">
+                  Примерный вес: <?= $product[6] ?>г
                 </p>
               </div>
-
-              <button class="btn">В корзину</button>
+              <a href="#" style="align-self: center">
+                 <button class="btn">В корзину</button>
+              </a>
             </div>
           <?php endforeach; ?>
         <?php endif; ?>

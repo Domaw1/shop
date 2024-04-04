@@ -155,7 +155,7 @@ if($result)
                   Примерный вес: <?= $product[6] ?>г
                 </p>
               </div>
-              <button class="btn" onclick="">В корзину</button>
+              <button class="btn">В корзину</button>
             </div>
           <?php endforeach; ?>
         <?php endif; ?>

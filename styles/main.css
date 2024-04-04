@@ -193,6 +193,7 @@ a {
   font-size: 1.2rem;
   color: var(--white-100);
   border-radius: 10px;
+  align-self: center;
 }
 
 .btn:hover {

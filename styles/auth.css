@@ -37,6 +37,7 @@
 
 .first-element, .second-element {
     display: flex;
+    flex-direction: column;
     justify-content: space-between;
     align-items: center;
 }
@@ -74,4 +75,12 @@ input {
 input:focus, input:hover {
     outline: none;
     border-color: var(--blue-50);
+}
+
+.val:invalid {
+    border-color: red;
+}
+
+.val:valid {
+    border-color: green;
 }

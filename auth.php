@@ -16,17 +16,23 @@
         <form action="auth-db.php" method="post" class="form-control">
             <h1 style="text-align: center">Авторизация</h1>
             <div class="first-element">
-                <label for="email">Почта: </label>
-                <input type="email" name="email" id="email" />
+                <div style="display: flex; align-items: center; justify-content: space-between; width: 420px;">
+                    <label for="email">Почта: </label>
+                    <input type="email" name="email" id="email" required/>
+                </div>
             </div>
             <div class="second-element">
-                <label for="password">Пароль: </label>
-                <input type="password" name="password" id="password" />
+                <div style="display: flex; align-items: center; justify-content: space-between; width: 420px;">
+                    <label for="password">Пароль: </label>
+                    <input type="password" name="password" id="password" required />
+                </div>
             </div>
             <button type="submit" class="btn">Войти</button>
             <a href="./reg.php" style="align-self: end">Регистрация...</a>
         </form>
     </div>
+
+    <script src="./js/auth.js"></script>
 </body>
 
 </html>

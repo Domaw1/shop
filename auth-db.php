@@ -17,4 +17,4 @@ if ($select_query->num_rows > 0) {
         window.location='auth.php'</script>";
 }
 
-$select_query->close();
+$select_query->close(); 

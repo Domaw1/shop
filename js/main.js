@@ -16,6 +16,13 @@ if(searchInput.value.length > 0)
 else
   xmark.style.visibility = "hidden";
 
+function addToCart(currentUser) {
+  if(currentUser === null) {
+
+  }
+
+}
+
 function selectCategory() {
   const selectedOption = select.options[select.selectedIndex].value;
 

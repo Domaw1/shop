@@ -1,5 +1,6 @@
 const emailInput = document.getElementById("email");
 const passwordInput = document.getElementById("password");
+const form = document.querySelector(".form-control");
 
 emailInput.oninvalid = (event) => {
     event.target.setCustomValidity("");
@@ -17,10 +18,12 @@ passwordInput.oninvalid = (event) => {
 
 emailInput.oninput = (event) => {
     event.target.setCustomValidity("");
-    event.target.classList.add("val");
 }
 
 passwordInput.oninput = (event) => {
     event.target.setCustomValidity("");
-    event.target.classList.add("val");
 }
+
+form.addEventListener("focusout", (event) => {
+    event.target.classList.add("val");
+});

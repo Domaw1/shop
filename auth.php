@@ -16,15 +16,15 @@
         <form action="auth-db.php" method="post" class="form-control">
             <h1 style="text-align: center">Авторизация</h1>
             <div class="first-element">
-                <div style="display: flex; align-items: center; justify-content: space-between; width: 420px;">
+                <div class="form-field">
                     <label for="email">Почта: </label>
                     <input type="email" name="email" id="email" required/>
                 </div>
             </div>
             <div class="second-element">
-                <div style="display: flex; align-items: center; justify-content: space-between; width: 420px;">
+                <div class="form-field">
                     <label for="password">Пароль: </label>
-                    <input type="password" name="password" id="password" required />
+                    <input type="password" name="password" id="password" required minlength="5"/>
                 </div>
             </div>
             <button type="submit" class="btn">Войти</button>

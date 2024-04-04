@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="./styles/auth.css" />
+    <script src="https://kit.fontawesome.com/34d37fffb3.js"></script>
+
+    <title>Auth</title>
+</head>
+
+<body>
+    <div class="main-div">
+        <form action="reg-db.php" method="post" class="form-control">
+            <h1 style="text-align: center">Регистрация</h1>
+            <div class="first-element">
+                <div class="form-field">
+                    <label for="email">Почта: </label>
+                    <input type="email" name="email" id="email" required/>
+                </div>
+            </div>
+            <div class="second-element">
+                <div class="form-field">
+                    <label for="phone">Телефон: </label>
+                    <input type="tel" name="phone" id="phone" pattern="[8]{1} [0-9]{3} [0-9]{3}-[0-9]{2}-[0-9]{2}" required/>
+                </div>
+                <p>Формат: 8 123 456-78-90</p>
+            </div>
+            <div class="third-element">
+                <div class="form-field">
+                    <label for="password">Пароль: </label>
+                    <input type="password" name="password" id="password" required minlength="5"/>
+                </div>
+            </div>
+            <button type="submit" class="btn">Зарегистрироваться</button>
+            <a href="./reg.php" style="align-self: end">Авторизация...</a>
+        </form>
+    </div>
+
+    <script src="./js/auth.js"></script>
+</body>
+
+</html>

@@ -1,4 +1,5 @@
 <?php require "connection.php";
+
 function transliterateToRus($text) {
     $transliteration_table = array(
         "Ozherelya" => "Ожерелья", "Kolca" => "Кольца", "Sergi" => "Серьги",
@@ -14,11 +15,11 @@ function transliterateToEng($text) {
     );
     return strtr($text, $transliteration_table);
 }
-$currentUser = $_SESSION["user"] ?? null;
 
-$categoryParam = $_GET["category"];
-$searchParam = $_GET["search"];
-$searchValue = transliterateToRus($searchParam);
+$currentUser = $_SESSION["user_email"] ?? null;
+
+$categoryParam = $_GET["category"] ?? null;
+$searchParam = $_GET["search"] ?? null;
 
 $categories_query = mysqli_query($conn, "SELECT * FROM categories");
 $categories = mysqli_fetch_all($categories_query);
@@ -36,7 +37,8 @@ $query_string = "SELECT * FROM products INNER JOIN categories ON products.catego
          WHERE categories.title = ? AND products.title LIKE ?";
 $filter_query = $conn -> prepare($query_string);
 
-$currentCategory = transliterateToRus($categoryParam);
+$currentCategory = isset($categoryParam) ? transliterateToRus($categoryParam) : "";
+
 $filter_query -> bind_param("ss", $currentCategory, $param);
 $filter_query -> execute();
 $filter_query = $filter_query -> get_result();
@@ -165,7 +167,6 @@ if($result)
   </main>
 
   <footer id="footer">
-    <h1>HH</h1>
   </footer>
 
   <script src="./js/main.js"></script>

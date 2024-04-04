@@ -1,10 +1,11 @@
-@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Inconsolata:wght@500&family=Manrope:wght@200..800&family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
 
 * {
   margin: 0;
   padding: 0;
-  font-family: "Bebas Neue", sans-serif;
-  font-weight: 400;
+  font-family: "Manrope", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 300;
   font-style: normal;
 }
 
@@ -80,7 +81,7 @@ nav {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 150px;
+  width: 200px;
   height: 30px;
 }
 
@@ -113,12 +114,12 @@ nav {
   border-radius: 10px;
 }
 
-.search > i{
-  color: var(--gray-55);
+.search:focus-within {
+  border-color: var(--blue-50);
 }
 
-.search-input:focus {
-  outline: none;
+.search > i{
+  color: var(--gray-55);
 }
 
 .search-input {
@@ -127,6 +128,10 @@ nav {
   font-size: 1.3rem;
   padding: 5px;
   border: none;
+}
+
+.search-input:focus {
+  outline: none;
 }
 
 .pop {

@@ -1,3 +1,11 @@
+<?php require_once 'connection.php';
+$user = $_SESSION["user_email"] ?? null;
+
+if ($user) {
+    header("Location: index.php");  
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -35,7 +43,7 @@
                 </div>
             </div>
             <button type="submit" class="btn">Зарегистрироваться</button>
-            <a href="./reg.php" style="align-self: end">Авторизация...</a>
+            <a href="./auth.php" style="align-self: end">Авторизация...</a>
         </form>
     </div>
 

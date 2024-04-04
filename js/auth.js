@@ -25,5 +25,5 @@ passwordInput.oninput = (event) => {
 }
 
 form.addEventListener("focusout", (event) => {
-    event.target.classList.add("val");
+    event.target.classList.add("val");          
 });

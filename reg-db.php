@@ -5,7 +5,7 @@ $password = trim($_POST["password"]);
 
 $select_query = $conn->prepare("SELECT * FROM users WHERE email = ?");
 $select_query->bind_param("s", $email);
-$select_query->execute();
+$select_query->execute();   
 $select_query = $select_query->get_result();
 
 if ($select_query->num_rows > 0) {

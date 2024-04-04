@@ -1,3 +1,11 @@
+<?php require_once 'connection.php';
+$user = $_SESSION["user_email"] ?? null;
+
+if ($user) {
+    header("Location: index.php");  
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -18,13 +26,13 @@
             <div class="first-element">
                 <div class="form-field">
                     <label for="email">Почта: </label>
-                    <input type="email" name="email" id="email" required/>
+                    <input type="email" name="email" id="email" required />
                 </div>
             </div>
             <div class="second-element">
                 <div class="form-field">
                     <label for="password">Пароль: </label>
-                    <input type="password" name="password" id="password" required minlength="5"/>
+                    <input type="password" name="password" id="password" required minlength="5" />
                 </div>
             </div>
             <button type="submit" class="btn">Войти</button>

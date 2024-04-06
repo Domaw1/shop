@@ -66,7 +66,7 @@ if($result)
     <div class="user-links">
       <div class="info-links">
         <div class="link">
-          <a href="profile.html">
+          <a href="profile.php">
             О нас
           </a>
         </div>
@@ -87,7 +87,7 @@ if($result)
           <i class="fa-solid fa-shopping-cart fa-2x" aria-hidden="true" style="cursor: pointer"></i>
         </a>
           <?php if ($currentUser): ?>
-              <a href="./profile.html">
+              <a href="profile.php">
                   <i class="fa-solid fa-user fa-2x" aria-hidden="true"></i>
               </a>
           <?php else: ?>
@@ -116,15 +116,23 @@ if($result)
 
     <div class="products-filters">
       <div class="categories">
-        <select name="category" id="category">
-          <option value="products">Все товары</option>
-          <?php foreach ($categories as $itemCategory): ?>
-            <option value="<?= transliterateToEng($itemCategory[1]) ?>">
-              <?= $itemCategory[1] ?>
-            </option>
-          <?php endforeach; ?>
-        </select>
-        <button class="btn" onclick="selectCategory()" style="align-self: flex-start">Показать</button>
+          <div style="margin-left: 20px; width: 300px;">
+              <div class="select-category">
+                  <p>Категории</p>
+                  <i class="fa-solid fa-sort-up" id="sort-up"></i>
+                  <i class="fa-solid fa-sort-down" id="sort-down"></i>
+              </div>
+              <div class="available-categories">
+                  <div style="margin-left: 25px;">
+                      <p class="categories-item" id="products">Все</p>
+                      <?php foreach ($categories as $itemCategory): ?>
+                          <p class="categories-item" id="<?= transliterateToEng($itemCategory[1]) ?>"><?= $itemCategory[1] ?></p>
+                      <?php endforeach; ?>
+                  </div>
+
+              </div>
+<!--              <button class="btn" onclick="selectCategory()" style="height: 40px;">Показать</button>-->
+          </div>
       </div>
       <div class="products">
         <?php if ($filtered_products == null): ?>
@@ -157,7 +165,7 @@ if($result)
                   Примерный вес: <?= $product[6] ?>г
                 </p>
               </div>
-              <button class="btn">В корзину</button>
+              <button class="btn-to-cart">В корзину</button>
             </div>
           <?php endforeach; ?>
         <?php endif; ?>

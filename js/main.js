@@ -1,14 +1,19 @@
 const searchInput = document.querySelector(".search-input");
 const xmark = document.querySelector("#xmark");
-const select = document.querySelector("#category");
-const buttonsToCart = document.querySelectorAll(".btn");
+const buttonsToCart = document.querySelectorAll(".btn-to-cart");
+const categoriesList = document.querySelectorAll(".categories-item");
+
+const sortDown = document.getElementById("sort-down");
+const sortUp = document.getElementById("sort-up");
+const categories = document.querySelector(".available-categories");
 
 const urlParams = new URLSearchParams(window.location.search);
 
 const categoryOption = urlParams.get('category');
 const searchOption = urlParams.get('search');
 
-select.value = categoryOption === null ? "products" : categoryOption;
+const selector = document.querySelector(".select-category");
+
 searchInput.value = searchOption === null ? "" : searchOption;
 
 if(searchInput.value.length > 0)
@@ -20,15 +25,6 @@ function addToCart(currentUser) {
   if(currentUser === null) {
 
   }
-
-}
-
-function selectCategory() {
-  const selectedOption = select.options[select.selectedIndex].value;
-
-  if (selectedOption !== "products") {
-    window.location.replace(`index.php?category=${selectedOption}`);
-  } else window.location.replace("index.php");
 }
 
 function clearSearchInput() {
@@ -57,4 +53,41 @@ searchInput.addEventListener("keydown", (event) => {
 
     window.location.href = `index.php${queryString}`;
   }
+});
+
+selector.addEventListener("click", (event) => {
+
+  if(window.getComputedStyle(sortUp).display === "block") {
+    sortDown.style.display = "block";
+    sortUp.style.display = "none";
+    categories.style.display = "block";
+
+    selector.style.background = "#cfe2fa";
+  } else {
+    sortDown.style.display = "none";
+    sortUp.style.display = "block";
+    categories.style.display = "none";
+
+    selector.style.background = "transparent";
+  }
+});
+
+categoriesList.forEach(category => {
+  if(categoryOption === category.id) {
+    category.style.background = "#cfe2fa";
+
+    sortDown.style.display = "block";
+    sortUp.style.display = "none";
+    categories.style.display = "block";
+
+    selector.style.background = "#cfe2fa";
+  }
+
+  category.addEventListener("click", (event) => {
+    if(event.target.id === "products") {
+      window.location.replace(`index.php`);
+    } else {
+      window.location.replace(`index.php?category=${event.target.id}`);
+    }
+  })
 });

@@ -116,7 +116,7 @@ nav {
   border-radius: 10px;
 }
 
-.search:focus-within {
+.search:focus-within, .search:hover {
   border-color: var(--blue-50);
 }
 

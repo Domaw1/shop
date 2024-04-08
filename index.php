@@ -1,6 +1,7 @@
 <?php require "connection.php";
 
-function transliterateToRus($text) {
+function transliterateToRus($text): string
+{
     $transliteration_table = array(
         "Ozherelya" => "Ожерелья", "Kolca" => "Кольца", "Sergi" => "Серьги",
         "Braslety" => "Браслеты", "Cepi" => "Цепи"
@@ -8,7 +9,8 @@ function transliterateToRus($text) {
     return strtr($text, $transliteration_table);
 }
 
-function transliterateToEng($text) {
+function transliterateToEng($text): string
+{
     $transliteration_table = array(
         "Ожерелья" => "Ozherelya", "Кольца" => "Kolca", "Серьги" => "Sergi",
         "Браслеты" => "Braslety", "Цепи" => "Cepi"
@@ -62,52 +64,47 @@ if($result)
 </head>
 
 <body>
-  <header>
-    <div class="user-links">
-      <div class="info-links">
-        <div class="link">
-          <a href="profile.php">
-            О нас
-          </a>
+    <header>
+        <div class="user-links">
+            <div class="info-links">
+                <div class="link">
+                    <a href="profile.php">
+                        О нас
+                    </a>
+                </div>
+            </div>
+            <div class="jewelry-link">
+                <h1>Ювелирка</h1>
+            </div>
+            <div class="icons">
+                <a href="favourite.php">
+                    <i class="fa-solid fa-heart fa-2x" aria-hidden="true"></i>
+                </a>
+                <a href="cart.php">
+                    <i class="fa-solid fa-shopping-cart fa-2x" aria-hidden="true" style="cursor: pointer"></i>
+                </a>
+                <?php if ($currentUser):?>
+                    <a href="profile.php">
+                        <i class="fa-solid fa-user fa-2x" aria-hidden="true"></i>
+                    </a>
+                <?php else: ?>
+                    <a href="./auth.php">
+                        <i class="fa-solid fa-user fa-2x" aria-hidden="true"></i>
+                    </a>
+                <?php endif ?>
+            </div>
         </div>
-        <div class="link">
-          <a href="brands.html">
-            Доставка и оплата
-          </a>
-        </div>
-      </div>
-      <div class="jewelry-link">
-        <h1>Ювелирка</h1>
-      </div>
-      <div class="icons">
-        <a href="#">
-          <i class="fa-solid fa-heart fa-2x" aria-hidden="true"></i>
-        </a>
-        <a href="#">
-          <i class="fa-solid fa-shopping-cart fa-2x" aria-hidden="true" style="cursor: pointer"></i>
-        </a>
-          <?php if ($currentUser): ?>
-              <a href="profile.php">
-                  <i class="fa-solid fa-user fa-2x" aria-hidden="true"></i>
-              </a>
-          <?php else: ?>
-              <a href="./auth.php">
-                  <i class="fa-solid fa-user fa-2x" aria-hidden="true"></i>
-              </a>
-          <?php endif ?>
-      </div>
-    </div>
-    <nav>
-      <div class="jewelry-link">
-        <h2>Каталог</h2>
-      </div>
-      <div class="search">
-        <i class="fa-solid fa-magnifying-glass fa-lg"></i>
-        <input type="text" placeholder="Поиск..." class="search-input">
-        <i class="fa-solid fa-xmark fa-xl" id="xmark" onclick="clearSearchInput()"></i>
-      </div>
-    </nav>
-  </header>
+        <nav>
+            <div class="jewelry-link">
+                <h2>Каталог</h2>
+            </div>
+            <div class="search">
+                <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+                <input type="text" placeholder="Поиск..." class="search-input">
+                <i class="fa-solid fa-xmark fa-xl" id="xmark" onclick="clearSearchInput()"></i>
+            </div>
+        </nav>
+    </header>
 
   <main>
     <div class="jewelry-link">

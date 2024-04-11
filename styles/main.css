@@ -193,7 +193,7 @@ a {
   border: none;
   background: var( --blue-50);
   font-size: 1.2rem;
-  color: var(--white-100);
+  color: var(--white-100);  
   border-radius: 10px;
   align-self: center;
 }
@@ -217,15 +217,15 @@ a {
   cursor: pointer;
 }
 
-#sort-up {
-  height: 7px;
+#sort-up-c, #sort-up-m {
+  height: 10px;
 }
 
-#sort-down {
+#sort-down-c, #sort-down-m {
   height: 43px;
 }
 
-#sort-down {
+#sort-down-c, #sort-down-m {
   display: none;
 }
 
@@ -238,7 +238,7 @@ ul {
   list-style-type: none;
 }
 
-.categories-item {
+.categories-item, .material-item {
   font-size: 1.3rem;
   padding: 10px;
   border-radius: 10px;
@@ -248,4 +248,14 @@ ul {
 .categories-item:hover {
   cursor: pointer;
   background-color: var(--blue-10);
+}
+
+.checkboxes {
+  display: flex;
+  align-items: center;
+}
+
+.checkboxes > input {
+  width: 18px;
+  height: 18px;
 }

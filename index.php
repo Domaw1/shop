@@ -1,22 +1,22 @@
 <?php require "connection.php";
 
-function transliterateToRus($text): string
-{
-    $transliteration_table = array(
-        "Ozherelya" => "Ожерелья", "Kolca" => "Кольца", "Sergi" => "Серьги",
-        "Braslety" => "Браслеты", "Cepi" => "Цепи"
-    );
-    return strtr($text, $transliteration_table);
-}
-
-function transliterateToEng($text): string
-{
-    $transliteration_table = array(
-        "Ожерелья" => "Ozherelya", "Кольца" => "Kolca", "Серьги" => "Sergi",
-        "Браслеты" => "Braslety", "Цепи" => "Cepi"
-    );
-    return strtr($text, $transliteration_table);
-}
+//function transliterateToRus($text): string
+//{
+//    $transliteration_table = array(
+//        "Ozherelya" => "Ожерелья", "Kolca" => "Кольца", "Sergi" => "Серьги",
+//        "Braslety" => "Браслеты", "Cepi" => "Цепи"
+//    );
+//    return strtr($text, $transliteration_table);
+//}
+//
+//function transliterateToEng($text): string
+//{
+//    $transliteration_table = array(
+//        "Ожерелья" => "Ozherelya", "Кольца" => "Kolca", "Серьги" => "Sergi",
+//        "Браслеты" => "Braslety", "Цепи" => "Cepi"
+//    );
+//    return strtr($text, $transliteration_table);
+//}
 
 $currentUser = $_SESSION["user_email"] ?? null;
 
@@ -25,6 +25,9 @@ $searchParam = $_GET["search"] ?? null;
 
 $categories_query = mysqli_query($conn, "SELECT * FROM categories");
 $categories = mysqli_fetch_all($categories_query);
+
+$materials_query = mysqli_query($conn, "SELECT * FROM materials");
+$materials = mysqli_fetch_all($materials_query);
 
 $param = "%{$searchParam}%";
 
@@ -39,7 +42,7 @@ $query_string = "SELECT * FROM products INNER JOIN categories ON products.catego
          WHERE categories.title = ? AND products.title LIKE ?";
 $filter_query = $conn -> prepare($query_string);
 
-$currentCategory = isset($categoryParam) ? transliterateToRus($categoryParam) : "";
+$currentCategory = $categoryParam ?? "";
 
 $filter_query -> bind_param("ss", $currentCategory, $param);
 $filter_query -> execute();
@@ -106,70 +109,83 @@ if($result)
         </nav>
     </header>
 
-  <main>
-    <div class="jewelry-link">
-      <h1 style="margin-top: 10px">Наш каталог</h1>
-    </div>
+    <main>
+        <div class="jewelry-link">
+            <h1 style="margin: 10px 0 10px 0">Наш каталог</h1>
+        </div>
 
-    <div class="products-filters">
-      <div class="categories">
-          <div style="margin-left: 20px; width: 300px;">
-              <div class="select-category">
-                  <p>Категории</p>
-                  <i class="fa-solid fa-sort-up" id="sort-up"></i>
-                  <i class="fa-solid fa-sort-down" id="sort-down"></i>
-              </div>
-              <div class="available-categories">
-                  <div style="margin-left: 25px;">
-                      <p class="categories-item" id="products">Все</p>
-                      <?php foreach ($categories as $itemCategory): ?>
-                          <p class="categories-item" id="<?= transliterateToEng($itemCategory[1]) ?>"><?= $itemCategory[1] ?></p>
-                      <?php endforeach; ?>
+        <div class="products-filters">
+          <div class="categories">
+              <div style="margin-left: 20px; width: 300px;">
+                  <div class="select-category">
+                      <p>Категории</p>
+                      <i class="fa-solid fa-sort-up" id="sort-up"></i>
+                      <i class="fa-solid fa-sort-down" id="sort-down"></i>
                   </div>
-
+                  <div class="available-categories">
+                      <div style="margin-left: 25px;">
+                          <p class="categories-item" id="products">Все</p>
+                          <?php foreach ($categories as $itemCategory): ?>
+                              <p class="categories-item" id="<?= $itemCategory[1] ?>"><?= $itemCategory[1] ?></p>
+                          <?php endforeach; ?>
+                      </div>
+                  </div>
               </div>
-<!--              <button class="btn" onclick="selectCategory()" style="height: 40px;">Показать</button>-->
+              <div style="margin-left: 20px; width: 300px;">
+                  <div class="select-material">
+                      <p>Материалы</p>
+                      <i class="fa-solid fa-sort-up" id="sort-up"></i>
+                      <i class="fa-solid fa-sort-down" id="sort-down"></i>
+                  </div>
+                  <div class="available-materials">
+                      <div style="margin-left: 25px;">
+                          <p class="categories-item" id="products">Все</p>
+                          <?php foreach ($materials as $material): ?>
+                              <p class="categories-item" id="<?= $material[1] ?>"><?= $material[1] ?></p>
+                          <?php endforeach; ?>
+                      </div>
+                  </div>
+              </div>
           </div>
-      </div>
-      <div class="products">
-        <?php if ($filtered_products == null): ?>
-          <h1>No results</h1>
-        <?php else: ?>
-          <?php foreach ($filtered_products as $product): ?>
-            <div class="product">
-              <?php
-              $query_string = "SELECT * FROM photos INNER JOIN products ON photos.product_id = products.id 
-                               WHERE photos.product_id = ? ORDER BY photos.id";
 
-              $image_query = $conn -> prepare($query_string);
-              $image_query -> bind_param("i", $product[0]);
-              $image_query -> execute();
-              $image_query = $image_query -> get_result();
-              $result_image = mysqli_fetch_all($image_query);
+          <div class="products">
+            <?php if ($filtered_products == null): ?>
+              <h1>No results</h1>
+            <?php else: ?>
+              <?php foreach ($filtered_products as $product): ?>
+                <div class="product">
+                  <?php
+                  $query_string = "SELECT * FROM photos INNER JOIN products ON photos.product_id = products.id 
+                                   WHERE photos.product_id = ? ORDER BY photos.id";
 
-              $imageData = base64_encode($result_image[0][2]);
+                  $image_query = $conn -> prepare($query_string);
+                  $image_query -> bind_param("i", $product[0]);
+                  $image_query -> execute();
+                  $image_query = $image_query -> get_result();
+                  $result_image = mysqli_fetch_all($image_query);
 
-              echo '<img src="data:image/jpeg;base64,' . $imageData . '"style="width: 200px; height=200px; align-self:center;" />';
-              ?>
-              <div>
-                <p style="font-size: 2rem" class="product-info">
-                  <?= $product[8] ?> ₽
-                </p>
-                <p class="product-info">
-                  <?= $product[1] ?>
-                </p>
-                <p class="product-info">
-                  Примерный вес: <?= $product[6] ?>г
-                </p>
-              </div>
-              <button class="btn-to-cart">В корзину</button>
-            </div>
-          <?php endforeach; ?>
-        <?php endif; ?>
-      </div>
+                  $imageData = base64_encode($result_image[0][2]);
 
-    </div>
-  </main>
+                  echo '<img src="data:image/jpeg;base64,' . $imageData . '"style="width: 200px; height=200px; align-self:center;" />';
+                  ?>
+                  <div>
+                    <p style="font-size: 2rem" class="product-info">
+                      <?= $product[8] ?> ₽
+                    </p>
+                    <p class="product-info">
+                      <?= $product[1] ?>
+                    </p>
+                    <p class="product-info">
+                      Примерный вес: <?= $product[6] ?>г
+                    </p>
+                  </div>
+                  <button class="btn-to-cart">В корзину</button>
+                </div>
+              <?php endforeach; ?>
+            <?php endif; ?>
+          </div>
+        </div>
+    </main>
 
   <footer id="footer">
   </footer>

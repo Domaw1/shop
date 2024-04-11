@@ -6,13 +6,15 @@ const categoriesList = document.querySelectorAll(".categories-item");
 const sortDown = document.getElementById("sort-down");
 const sortUp = document.getElementById("sort-up");
 const categories = document.querySelector(".available-categories");
+const materials = document.querySelector(".available-materials");
 
 const urlParams = new URLSearchParams(window.location.search);
 
 const categoryOption = urlParams.get('category');
 const searchOption = urlParams.get('search');
 
-const selector = document.querySelector(".select-category");
+const selectorCategory = document.querySelector(".select-category");
+const selectorMaterial = document.querySelector(".select-material");
 
 searchInput.value = searchOption === null ? "" : searchOption;
 
@@ -55,20 +57,35 @@ searchInput.addEventListener("keydown", (event) => {
   }
 });
 
-selector.addEventListener("click", (event) => {
-
+selectorCategory.addEventListener("click", (event) => {
   if(window.getComputedStyle(sortUp).display === "block") {
     sortDown.style.display = "block";
     sortUp.style.display = "none";
     categories.style.display = "block";
 
-    selector.style.background = "#cfe2fa";
+    selectorCategory.style.background = "#cfe2fa";
   } else {
     sortDown.style.display = "none";
     sortUp.style.display = "block";
     categories.style.display = "none";
 
-    selector.style.background = "transparent";
+    selectorCategory.style.background = "transparent";
+  }
+});
+
+selectorMaterial.addEventListener("click", (event) => {
+  if(window.getComputedStyle(sortUp).display === "block") {
+    sortDown.style.display = "block";
+    sortUp.style.display = "none";
+    materials.style.display = "block";
+
+    selectorMaterial.style.background = "#cfe2fa";
+  } else {
+    sortDown.style.display = "none";
+    sortUp.style.display = "block";
+    materials.style.display = "none";
+
+    selectorMaterial.style.background = "transparent";
   }
 });
 
@@ -80,7 +97,7 @@ categoriesList.forEach(category => {
     sortUp.style.display = "none";
     categories.style.display = "block";
 
-    selector.style.background = "#cfe2fa";
+    selectorCategory.style.background = "#cfe2fa";
   }
 
   category.addEventListener("click", (event) => {

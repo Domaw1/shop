@@ -144,8 +144,7 @@ nav {
 
 .products-filters {
   display: flex;
-  align-items: start;
-  justify-content: space-between;
+  position: relative;
   margin: 10px 0 10px 0;
 }
 
@@ -170,6 +169,8 @@ a {
   display: flex;
   flex-wrap: wrap;
   gap: 5px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .product {
@@ -193,7 +194,7 @@ a {
   border: none;
   background: var( --blue-50);
   font-size: 1.2rem;
-  color: var(--white-100);  
+  color: var(--white-100);
   border-radius: 10px;
   align-self: center;
 }
@@ -218,7 +219,7 @@ a {
 }
 
 #sort-up-c, #sort-up-m {
-  height: 10px;
+  height: 7px;
 }
 
 #sort-down-c, #sort-down-m {
@@ -232,6 +233,7 @@ a {
 .available-categories, .available-materials {
   display: none;
   margin-top: 10px;
+  margin-bottom: 10px;
 }
 
 ul {
@@ -250,12 +252,16 @@ ul {
   background-color: var(--blue-10);
 }
 
-.checkboxes {
+.material-item:hover {
+  cursor: pointer;
+}
+
+.checkbox {
   display: flex;
   align-items: center;
 }
 
-.checkboxes > input {
+.material-check {
   width: 18px;
   height: 18px;
 }

@@ -5,9 +5,13 @@ const categoriesList = document.querySelectorAll(".categories-item");
 
 const sortDown = document.getElementById("sort-down-c");
 const sortDownMaterial = document.getElementById("sort-down-m");
+const sortDownFilter = document.getElementById("sort-down-f");
 const sortUp = document.getElementById("sort-up-c");
 const sortUpMaterial = document.getElementById("sort-up-m");
+const sortUpFilter = document.getElementById("sort-up-f");
 const categories = document.querySelector(".available-categories");
+const select = document.querySelector('.select');
+const sortFilters = document.querySelector('.sort-filters');
 const materials = document.querySelector(".available-materials");
 
 const checkboxes = document.querySelectorAll(".material-check");
@@ -148,3 +152,16 @@ but.addEventListener("click", () => {
     else window.location.replace(`index.php?materials=${url}`);
   }
 });
+
+
+select.addEventListener("click", (event) => {
+  if (window.getComputedStyle(sortUpFilter).display === "block") {
+    sortDownFilter.style.display = "block";
+    sortUpFilter.style.display = "none";
+    sortFilters.style.opacity = "1";
+  } else {
+    sortDownFilter.style.display = "none";
+    sortUpFilter.style.display = "block";
+    sortFilters.style.opacity = "0";
+  }
+})

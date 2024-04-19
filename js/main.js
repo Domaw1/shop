@@ -2,6 +2,7 @@ const searchInput = document.querySelector(".search-input");
 const xmark = document.querySelector("#xmark");
 const buttonsToCart = document.querySelectorAll(".btn-to-cart");
 const categoriesList = document.querySelectorAll(".categories-item");
+const but = document.querySelector("#but");
 
 const sortDown = document.getElementById("sort-down-c");
 const sortDownMaterial = document.getElementById("sort-down-m");
@@ -10,9 +11,10 @@ const sortUp = document.getElementById("sort-up-c");
 const sortUpMaterial = document.getElementById("sort-up-m");
 const sortUpFilter = document.getElementById("sort-up-f");
 const categories = document.querySelector(".available-categories");
-const select = document.querySelector('.select');
-const sortFilters = document.querySelector('.sort-filters');
+const select = document.querySelector(".select");
+const sortFilters = document.querySelector(".sort-filters");
 const materials = document.querySelector(".available-materials");
+const sorts = document.querySelectorAll(".sort");
 
 const checkboxes = document.querySelectorAll(".material-check");
 
@@ -62,11 +64,11 @@ searchInput.addEventListener("keydown", (event) => {
     const searchParam = searchInput.value ? `search=${searchInput.value}` : "";
 
     const queryString =
-        categoryParam && searchParam
-            ? `?${categoryParam}&${searchParam}`
-            : categoryParam || searchParam
-                ? `?${categoryParam}${searchParam}`
-                : "";
+      categoryParam && searchParam
+        ? `?${categoryParam}&${searchParam}`
+        : categoryParam || searchParam
+        ? `?${categoryParam}${searchParam}`
+        : "";
 
     window.location.href = `index.php${queryString}`;
   }
@@ -122,13 +124,13 @@ categoriesList.forEach((category) => {
       else window.location.replace(`index.php`);
     } else {
       if (materialOption)
-        window.location.replace(`index.php?category=${event.target.id}&materials=${materialOption}`);
+        window.location.replace(
+          `index.php?category=${event.target.id}&materials=${materialOption}`
+        );
       else window.location.replace(`index.php?category=${event.target.id}`);
     }
   });
 });
-
-const but = document.querySelector("#but");
 
 but.addEventListener("click", () => {
   let url = "";
@@ -147,21 +149,50 @@ but.addEventListener("click", () => {
     url = url.substring(0, url.length - 1);
     if (categoryOption)
       window.location.replace(
-          `index.php?category=${categoryOption}&materials=${url}`
+        `index.php?category=${categoryOption}&materials=${url}`
       );
     else window.location.replace(`index.php?materials=${url}`);
   }
 });
-
 
 select.addEventListener("click", (event) => {
   if (window.getComputedStyle(sortUpFilter).display === "block") {
     sortDownFilter.style.display = "block";
     sortUpFilter.style.display = "none";
     sortFilters.style.opacity = "1";
+    sortFilters.style.pointerEvents = "all";
   } else {
     sortDownFilter.style.display = "none";
     sortUpFilter.style.display = "block";
     sortFilters.style.opacity = "0";
+    sortFilters.style.pointerEvents = "none";
   }
-})
+});
+
+sorts.forEach((sort) => {
+  sort.addEventListener("click", (event) => {
+    let url = "";
+
+    url += sort.id;
+
+    if (url.length === 0) {
+      if (categoryOption)
+        window.location.replace(`index.php?category=${categoryOption}`);
+      else window.location.replace("index.php");
+    } else {
+      url = url.substring(0, url.length);
+      if (categoryOption)
+        window.location.replace(
+          `index.php?category=${categoryOption}&materials=${materialOption}&sort=${url}`
+        );
+      else if (materialOption)
+        window.location.replace(
+          `index.php?materials=${materialOption}&sort=${url}`
+        );
+      else if(sort.id === "fame") window.location.replace(`index.php`);
+      else window.location.replace(
+        `index.php?sort=${url}`
+      );
+    }
+  });
+});

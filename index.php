@@ -151,9 +151,9 @@ if ($materialParam)
                         <i class="fa-solid fa-sort-down" id="sort-down-f"></i>
                     </div>
                     <div class="sort-filters">
-                        <p class="fame">По популярности</p>
-                        <p class="cost-up">По возрастанию цены</p>
-                        <p class="cost-down">По убыванию цены</p>
+                        <p class="sort" id="fame">По популярности</p>
+                        <p class="sort" id="cost-up">По возрастанию цены</p>
+                        <p class="sort" id="cost-down">По убыванию цены</p>
                     </div>
                 </div>
 

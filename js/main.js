@@ -169,30 +169,30 @@ select.addEventListener("click", (event) => {
   }
 });
 
-sorts.forEach((sort) => {
-  sort.addEventListener("click", (event) => {
-    let url = "";
+// sorts.forEach((sort) => {
+//   sort.addEventListener("click", (event) => {
+//     let url = "";
 
-    url += sort.id;
+//     url += sort.id;
 
-    if (url.length === 0) {
-      if (categoryOption)
-        window.location.replace(`index.php?category=${categoryOption}`);
-      else window.location.replace("index.php");
-    } else {
-      url = url.substring(0, url.length);
-      if (categoryOption)
-        window.location.replace(
-          `index.php?category=${categoryOption}&materials=${materialOption}&sort=${url}`
-        );
-      else if (materialOption)
-        window.location.replace(
-          `index.php?materials=${materialOption}&sort=${url}`
-        );
-      else if(sort.id === "fame") window.location.replace(`index.php`);
-      else window.location.replace(
-        `index.php?sort=${url}`
-      );
-    }
-  });
-});
+//     if (url.length === 0) {
+//       if (categoryOption)
+//         window.location.replace(`index.php?category=${categoryOption}`);
+//       else window.location.replace("index.php");
+//     } else {
+//       url = url.substring(0, url.length);
+//       if (categoryOption)
+//         window.location.replace(
+//           `index.php?category=${categoryOption}&materials=${materialOption}&sort=${url}`
+//         );
+//       else if (materialOption)
+//         window.location.replace(
+//           `index.php?materials=${materialOption}&sort=${url}`
+//         );
+//       else if(sort.id === "fame") window.location.replace(`index.php`);
+//       else window.location.replace(
+//         `index.php?sort=${url}`
+//       );
+//     }
+//   });
+// });

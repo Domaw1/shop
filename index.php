@@ -60,35 +60,7 @@ if ($materialParam)
 
 <body>
     <header>
-        <div class="user-links">
-            <div class="info-links">
-                <div class="link">
-                    <a href="profile.php">
-                        О нас
-                    </a>
-                </div>
-            </div>
-            <div class="jewelry-link">
-                <h1>Ювелирка</h1>
-            </div>
-            <div class="icons">
-                <a href="favourite.php">
-                    <i class="fa-solid fa-heart fa-2x" aria-hidden="true"></i>
-                </a>
-                <a href="cart.php">
-                    <i class="fa-solid fa-shopping-cart fa-2x" aria-hidden="true" style="cursor: pointer"></i>
-                </a>
-                <?php if ($currentUser): ?>
-                    <a href="profile.php">
-                        <i class="fa-solid fa-user fa-2x" aria-hidden="true"></i>
-                    </a>
-                <?php else: ?>
-                    <a href="./auth.php">
-                        <i class="fa-solid fa-user fa-2x" aria-hidden="true"></i>
-                    </a>
-                <?php endif ?>
-            </div>
-        </div>
+        <?php require "navbar.php" ?>
         <nav>
             <div class="jewelry-link">
                 <h2>Каталог</h2>
@@ -100,7 +72,6 @@ if ($materialParam)
             </div>
         </nav>
     </header>
-
     <main>
         <div class="jewelry-link">
             <h1 style="margin: 10px 0 10px 0">Наш каталог</h1>
@@ -144,7 +115,7 @@ if ($materialParam)
                 </div>
             </div>
             <div>
-                <div class="select-filter">
+                <!-- <div class="select-filter">
                     <div class="select">
                         <p>По популярности</p>
                         <i class="fa-solid fa-sort-up" id="sort-up-f"></i>
@@ -155,7 +126,7 @@ if ($materialParam)
                         <p class="sort" id="cost-up">По возрастанию цены</p>
                         <p class="sort" id="cost-down">По убыванию цены</p>
                     </div>
-                </div>
+                </div> -->
 
                 <div class="products">
                     <?php if ($filtered_products == null): ?>
@@ -188,7 +159,8 @@ if ($materialParam)
                                         Примерный вес: <?= $product[6] ?>г
                                     </p>
                                 </div>
-                                <button class="btn-to-cart">В корзину</button>
+                                <button class="btn-to-cart"><a href="add-to-cart.php?item=<?= $product[0] ?>"
+                                        style="color: white">В корзину</a></button>
                             </div>
                         <?php endforeach; ?>
                     <?php endif; ?>

@@ -8,11 +8,11 @@ $selectQuery->bind_param("ss", $email, $password);
 $selectQuery->execute();
 $selectQuery = $selectQuery->get_result();
 
-if ($select_query->num_rows > 0) {
+if ($selectQuery->num_rows > 0) {
     $_SESSION["user_email"] = $selectQuery->fetch_assoc()["email"];
     echo "<script>alert('Добро пожаловать!');
         window.location='index.php'</script>";
 } else {
     echo "<script>alert('Пользователь не найден');
-        window.location='auth.php'</script>";
+      window.location='auth.php'</script>";
 }

@@ -32,7 +32,7 @@ if ($user) {
             <div class="second-element">
                 <div class="form-field">
                     <label for="phone">Телефон: </label>
-                    <input type="tel" name="phone" id="phone" pattern="[8]{1} [0-9]{3} [0-9]{3}-[0-9]{2}-[0-9]{2}" required/>
+                    <input type="tel" name="phone" class="phone-mask" id="phone" pattern="[8]{1} [0-9]{3} [0-9]{3}-[0-9]{2}-[0-9]{2}" required/>
                 </div>
                 <p>Формат: 8 123 456-78-90</p>
             </div>
@@ -47,7 +47,8 @@ if ($user) {
         </form>
     </div>
 
-    <script src="./js/auth.js"></script>
+    <script src="./js/auth.js">
+    </script>
 </body>
 
 </html>
